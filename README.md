@@ -5,7 +5,7 @@ Adrián Kres
 5ZYI36
 
 ## Stručný opis projektu
-Webová aplikácia AlpineTracker slúži ako osobný digitálny denník pre turistov, horolezcov a milovníkov prírody. Umožňuje používateľom systematicky zaznamenávať absolvované alebo plánované túry, nahrávať GPX súbory s trasami, priraďovať fotografie a interaktívne vizualizovať trasy nad 3D modelom terénu. Hlavným účelom je poskytnúť moderný nástroj na archiváciu horských zážitkov, sledovanie štatistík a vizuálnu prehľadnosť absolvovaných výstupov.
+Webová aplikácia ExploreSlovakia slúži ako osobný digitálny denník pre turistov, horolezcov a milovníkov prírody. Umožňuje používateľom systematicky zaznamenávať absolvované alebo plánované túry, nahrávať GPX súbory s trasami, priraďovať fotografie a interaktívne vizualizovať trasy nad 3D modelom terénu. Hlavným účelom je poskytnúť moderný nástroj na archiváciu horských zážitkov, sledovanie štatistík a vizuálnu prehľadnosť absolvovaných výstupov.
 
 ## Role v projekte
 * **Návštevník:** Neregistrovaný používateľ, ktorý si môže prezerať verejný zoznam túr, prehľad pohorí a ukážkové 3D mapy.

@@ -1,0 +1,5 @@
+# macOS systémové súbory
+.DS_Store
+
+# JetBrains IDE (CLion, IntelliJ, WebStorm...)
+.idea/
