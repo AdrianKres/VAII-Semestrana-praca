@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExploreSlovakia – Prehľad túr a 3D denník</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-container">
+    <header class="app-header">
+        <a href="index.html" class="brand">
+            <svg class="brand-logo" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+                <rect width="44" height="44" rx="12" fill="#E6F2F7"/>
+                <path d="M 2 34 L 11 19 L 19 27 L 33 15 L 42 34 Z" fill="#87BAD1"/>
+                <path d="M 5 36 L 14 20 L 19 8 L 23 5 L 24 11 L 30 16 L 39 36 Z" fill="#266178"/>
+                <path d="M 14 20 L 19 8 L 23 5 L 21 14 L 18 19 L 20 24 L 14 20 Z" fill="#FFFFFF"/>
+                <path d="M 0 35 Q 15 26 30 34 L 44 37 L 44 44 L 0 44 Z" fill="#2E5238"/>
+                <path d="M 8 44 Q 26 29 44 33 L 44 44 Z" fill="#70A642"/>
+            </svg>
+            <span class="brand-title">ExploreSlovakia</span>
+        </a>
+
+        <nav class="main-nav" aria-label="Hlavná navigácia">
+            <a href="index.html" class="nav-link active">Prehľad</a>
+            <a href="my-hikes.html" class="nav-link">Moje túry</a>
+            <a href="hike-detail.html" class="nav-link">3D Detail</a>
+            <a href="mountains.html" class="nav-link">Pohoria</a>
+            <a href="layout.html" class="nav-link">Šablóna</a>
+        </nav>
+
+        <div class="header-actions">
+            <a href="hike-form.html" class="btn btn-primary">+ Nová túra</a>
+            <a href="login.html" class="user-pill" title="Prejsť na prihlásenie / profil">Adrián K.</a>
+        </div>
+    </header>
+
+    <div class="shell-grid">
+        <!-- Bočný panel s AJAX filtrami a štatistikami -->
+        <aside class="card sidebar-section" aria-label="Filtre a štatistiky">
+            <h2>Filtrovať výstupy</h2>
+            <input type="search" class="search-input" placeholder="Hľadať štít alebo trasu..." aria-label="Hľadať túru">
+
+            <div class="filter-box">
+                <h3>Slovenské pohoria</h3>
+                <ul class="filter-list">
+                    <li><label><span><input type="checkbox" checked> Vysoké Tatry</span> <span
+                            class="badge badge-mountain">12</span></label></li>
+                    <li><label><span><input type="checkbox" checked> Západné Tatry</span> <span
+                            class="badge badge-mountain">5</span></label></li>
+                    <li><label><span><input type="checkbox" checked> Nízke Tatry</span> <span
+                            class="badge badge-mountain">8</span></label></li>
+                    <li><label><span><input type="checkbox"> Malá Fatra</span> <span
+                            class="badge badge-mountain">6</span></label></li>
+                </ul>
+            </div>
+
+            <div class="filter-box">
+                <h3>Moja sezóna 2026</h3>
+                <ul class="filter-list">
+                    <li>Absolvované túry: <strong>23 výstupov</strong></li>
+                    <li>Nastúpané metre: <strong>18 450 m</strong></li>
+                    <li>Prejdená vzdialenosť: <strong>284.5 km</strong></li>
+                </ul>
+                <a href="my-hikes.html" class="btn btn-secondary" style="width: 100%; margin-top: 14px;">Otvoriť môj
+                    denník →</a>
+            </div>
+        </aside>
+
+        <!-- Hlavný prehľad kariet túr -->
+        <main class="card">
+            <div class="page-title-bar">
+                <div>
+                    <h1>Najnovšie 3D záznamy túr</h1>
+                    <p class="subtitle">Objavujte trasy s GPX záznamom a 3D modelom slovenských pohorí</p>
+                </div>
+                <a href="hike-form.html" class="btn btn-primary">+ Pridať záznam túry</a>
+            </div>
+
+            <div class="hikes-grid">
+                <!-- Karta 1 -->
+                <article class="hike-card">
+                    <div class="hike-card-thumb">
+                        <span class="hike-card-badge">Vysoké Tatry</span>
+                        <svg viewBox="0 0 400 160" preserveAspectRatio="none">
+                            <rect width="400" height="160" fill="#DDE8DF"/>
+                            <path d="M 0 140 L 110 55 L 210 95 L 310 25 L 400 110 L 400 160 L 0 160 Z" fill="#B5CCB8"/>
+                            <path d="M 50 145 Q 150 90 310 28" fill="none" stroke="#E05429" stroke-width="4"
+                                  stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="hike-card-body">
+                        <h3>Výstup na Kriváň (2 494 m)</h3>
+                        <div class="hike-card-stats">
+                            <span>📏 15.8 km</span>
+                            <span>⛰️ +1 360 m</span>
+                            <span>⏱️ 6h 15m</span>
+                        </div>
+                        <p class="subtitle">Klasická hrebeňová trasa z Troch studničiek s 3D GPX záznamom.</p>
+                        <div class="hike-card-footer">
+                            <span>12. sep 2026 • Adrián K.</span>
+                            <a href="hike-detail.html" class="btn btn-sm btn-primary">3D Detail →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Karta 2 -->
+                <article class="hike-card">
+                    <div class="hike-card-thumb">
+                        <span class="hike-card-badge">Vysoké Tatry</span>
+                        <svg viewBox="0 0 400 160" preserveAspectRatio="none">
+                            <rect width="400" height="160" fill="#E3EDF2"/>
+                            <path d="M 0 135 L 95 70 L 245 30 L 340 85 L 400 60 L 400 160 L 0 160 Z" fill="#9BBCD0"/>
+                            <path d="M 40 140 Q 160 75 245 32" fill="none" stroke="#E05429" stroke-width="4"
+                                  stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="hike-card-body">
+                        <h3>Prechod cez Rysy (2 503 m)</h3>
+                        <div class="hike-card-stats">
+                            <span>📏 21.4 km</span>
+                            <span>⛰️ +1 290 m</span>
+                            <span>⏱️ 7h 10m</span>
+                        </div>
+                        <p class="subtitle">Výstup od Štrbského plesa okolo Chaty pod Rysmi s výhľadom na Morskie
+                            Oko.</p>
+                        <div class="hike-card-footer">
+                            <span>28. aug 2026 • Adrián K.</span>
+                            <a href="hike-detail.html" class="btn btn-sm btn-primary">3D Detail →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Karta 3 -->
+                <article class="hike-card">
+                    <div class="hike-card-thumb">
+                        <span class="hike-card-badge">Vysoké Tatry</span>
+                        <svg viewBox="0 0 400 160" preserveAspectRatio="none">
+                            <rect width="400" height="160" fill="#E6EBE4"/>
+                            <path d="M 0 145 L 140 40 L 220 65 L 310 20 L 400 125 L 400 160 L 0 160 Z" fill="#A7C0AC"/>
+                            <path d="M 70 135 L 140 42 L 310 22" fill="none" stroke="#E05429" stroke-width="4"
+                                  stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="hike-card-body">
+                        <h3>Ľadový štít cez Koňarčinu (2 627 m)</h3>
+                        <div class="hike-card-stats">
+                            <span>📏 18.2 km</span>
+                            <span>⛰️ +1 580 m</span>
+                            <span>⏱️ 8h 00m</span>
+                        </div>
+                        <p class="subtitle">Vysokohorský hrebeňový výstup na tretí najvyšší vrchol Tatier.</p>
+                        <div class="hike-card-footer">
+                            <span>04. aug 2026 • Adrián K.</span>
+                            <a href="hike-detail.html" class="btn btn-sm btn-primary">3D Detail →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Karta 4 -->
+                <article class="hike-card">
+                    <div class="hike-card-thumb">
+                        <span class="hike-card-badge">Nízke Tatry</span>
+                        <svg viewBox="0 0 400 160" preserveAspectRatio="none">
+                            <rect width="400" height="160" fill="#E8F0E4"/>
+                            <path d="M 0 120 Q 120 50 220 65 Q 320 35 400 90 L 400 160 L 0 160 Z" fill="#B5D1A3"/>
+                            <path d="M 30 125 Q 190 55 350 65" fill="none" stroke="#E05429" stroke-width="4"
+                                  stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="hike-card-body">
+                        <h3>Hrebeňovka: Ďumbier a Chopok</h3>
+                        <div class="hike-card-stats">
+                            <span>📏 16.5 km</span>
+                            <span>⛰️ +1 040 m</span>
+                            <span>⏱️ 5h 40m</span>
+                        </div>
+                        <p class="subtitle">Panoramatická hrebeňová túra cez najvyššie vrcholy Nízkych Tatier.</p>
+                        <div class="hike-card-footer">
+                            <span>19. júl 2026 • Nikola</span>
+                            <a href="hike-detail.html" class="btn btn-sm btn-primary">3D Detail →</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </main>
+    </div>
+
+    <footer class="app-footer">
+        ExploreSlovakia 2026 • Semestrálna práca VAII (UNIZA FRI) • Autor: Adrián Kres • <a href="layout.html">Zobraziť
+        kostru (Shell)</a> • <a href="login.html">Prihlásenie</a>
+    </footer>
+</div>
+</body>
+</html>

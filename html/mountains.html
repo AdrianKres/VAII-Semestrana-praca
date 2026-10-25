@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExploreSlovakia – Slovenské pohoria a správa</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-container">
+    <header class="app-header">
+        <a href="index.html" class="brand">
+            <svg class="brand-logo" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+                <rect width="44" height="44" rx="12" fill="#E6F2F7"/>
+                <path d="M 2 34 L 11 19 L 19 27 L 33 15 L 42 34 Z" fill="#87BAD1"/>
+                <path d="M 5 36 L 14 20 L 19 8 L 23 5 L 24 11 L 30 16 L 39 36 Z" fill="#266178"/>
+                <path d="M 14 20 L 19 8 L 23 5 L 21 14 L 18 19 L 20 24 L 14 20 Z" fill="#FFFFFF"/>
+                <path d="M 0 35 Q 15 26 30 34 L 44 37 L 44 44 L 0 44 Z" fill="#2E5238"/>
+                <path d="M 8 44 Q 26 29 44 33 L 44 44 Z" fill="#70A642"/>
+            </svg>
+            <span class="brand-title">ExploreSlovakia</span>
+        </a>
+
+        <nav class="main-nav" aria-label="Hlavná navigácia">
+            <a href="index.html" class="nav-link">Prehľad</a>
+            <a href="my-hikes.html" class="nav-link">Moje túry</a>
+            <a href="hike-detail.html" class="nav-link">3D Detail</a>
+            <a href="mountains.html" class="nav-link active">Pohoria</a>
+            <a href="layout.html" class="nav-link">Šablóna</a>
+        </nav>
+
+        <div class="header-actions">
+            <a href="hike-form.html" class="btn btn-primary">+ Nová túra</a>
+            <a href="login.html" class="user-pill" title="Prejsť na prihlásenie / profil">Adrián K.</a>
+        </div>
+    </header>
+
+    <div class="detail-grid">
+        <!-- Zoznam pohorí (CRUD Read/Update/Delete) -->
+        <section class="card">
+            <div class="page-title-bar">
+                <div>
+                    <h1>Slovenské pohoria</h1>
+                    <p class="subtitle">Prehľad regiónov a správa druhej hlavnej databázovej entity (MountainRange)</p>
+                </div>
+                <span class="badge badge-admin">Rola: Administrátor</span>
+            </div>
+
+            <div class="table-responsive">
+                <table class="data-table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Názov pohoria</th>
+                        <th>Najvyšší vrchol</th>
+                        <th>Počet túr</th>
+                        <th>Správa (Admin CRUD)</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>#1</td>
+                        <td><strong>Vysoké Tatry</strong><br><span class="subtitle">Najvyššie pohorie Slovenska s ľadovcovým reliéfom</span>
+                        </td>
+                        <td>Gerlachovský štít (2 655 m)</td>
+                        <td><span class="badge badge-mountain">12 túr</span></td>
+                        <td>
+                            <button type="button" class="btn btn-sm btn-secondary">Upraviť</button>
+                            <button type="button" class="btn btn-sm btn-danger">Zmazať</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#2</td>
+                        <td><strong>Západné Tatry</strong><br><span
+                                class="subtitle">Roháče a trávnato-skalnaté hrebene</span></td>
+                        <td>Bystrá (2 248 m)</td>
+                        <td><span class="badge badge-mountain">5 túr</span></td>
+                        <td>
+                            <button type="button" class="btn btn-sm btn-secondary">Upraviť</button>
+                            <button type="button" class="btn btn-sm btn-danger">Zmazať</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#3</td>
+                        <td><strong>Nízke Tatry</strong><br><span class="subtitle">Rozsiahle hrebeňové trasy medzi Kráľovou hoľou a Donovalmi</span>
+                        </td>
+                        <td>Ďumbier (2 043 m)</td>
+                        <td><span class="badge badge-mountain">8 túr</span></td>
+                        <td>
+                            <button type="button" class="btn btn-sm btn-secondary">Upraviť</button>
+                            <button type="button" class="btn btn-sm btn-danger">Zmazať</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#4</td>
+                        <td><strong>Malá Fatra</strong><br><span class="subtitle">Skalnatý Veľký Rozsutec a Jánošíkove diery</span>
+                        </td>
+                        <td>Veľký Kriváň (1 709 m)</td>
+                        <td><span class="badge badge-mountain">6 túr</span></td>
+                        <td>
+                            <button type="button" class="btn btn-sm btn-secondary">Upraviť</button>
+                            <button type="button" class="btn btn-sm btn-danger">Zmazať</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Formulár pre pridanie/úpravu pohoria (Admin Create/Update) -->
+        <aside class="card side-panel">
+            <div>
+                <h2>Pridať / Upraviť pohorie</h2>
+                <p class="subtitle" style="margin-bottom: 16px;">Sekcia prístupná pre rolu Administrátor</p>
+
+                <form action="mountains.html" method="get" style="display: flex; flex-direction: column; gap: 14px;">
+                    <div class="form-group">
+                        <label class="form-label" for="m_name">Názov pohoria *</label>
+                        <input type="text" id="m_name" class="form-control" placeholder="napr. Veľká Fatra" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="m_peak">Najvyšší vrchol a výška</label>
+                        <input type="text" id="m_peak" class="form-control" placeholder="napr. Ostredok (1 596 m)">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="m_desc">Charakteristika pohoria *</label>
+                        <textarea id="m_desc" rows="4" class="form-control" placeholder="Stručný opis pohoria..."
+                                  required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="margin-top: 6px;">+ Uložiť pohorie do DB
+                    </button>
+                </form>
+            </div>
+        </aside>
+    </div>
+
+    <footer class="app-footer">
+        ExploreSlovakia 2026 • Semestrálna práca VAII (UNIZA FRI) • Autor: Adrián Kres • <a href="layout.html">Zobraziť
+        kostru (Shell)</a> • <a href="login.html">Prihlásenie</a>
+    </footer>
+</div>
+</body>
+</html>

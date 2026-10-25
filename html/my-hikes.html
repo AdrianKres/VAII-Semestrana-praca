@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExploreSlovakia – Moje túry (Osobný denník)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-container">
+    <header class="app-header">
+        <a href="index.html" class="brand">
+            <svg class="brand-logo" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+                <rect width="44" height="44" rx="12" fill="#E6F2F7"/>
+                <path d="M 2 34 L 11 19 L 19 27 L 33 15 L 42 34 Z" fill="#87BAD1"/>
+                <path d="M 5 36 L 14 20 L 19 8 L 23 5 L 24 11 L 30 16 L 39 36 Z" fill="#266178"/>
+                <path d="M 14 20 L 19 8 L 23 5 L 21 14 L 18 19 L 20 24 L 14 20 Z" fill="#FFFFFF"/>
+                <path d="M 0 35 Q 15 26 30 34 L 44 37 L 44 44 L 0 44 Z" fill="#2E5238"/>
+                <path d="M 8 44 Q 26 29 44 33 L 44 44 Z" fill="#70A642"/>
+            </svg>
+            <span class="brand-title">ExploreSlovakia</span>
+        </a>
+
+        <nav class="main-nav" aria-label="Hlavná navigácia">
+            <a href="index.html" class="nav-link">Prehľad</a>
+            <a href="my-hikes.html" class="nav-link active">Moje túry</a>
+            <a href="hike-detail.html" class="nav-link">3D Detail</a>
+            <a href="mountains.html" class="nav-link">Pohoria</a>
+            <a href="layout.html" class="nav-link">Šablóna</a>
+        </nav>
+
+        <div class="header-actions">
+            <a href="hike-form.html" class="btn btn-primary">+ Nová túra</a>
+            <a href="login.html" class="user-pill" title="Prejsť na prihlásenie / profil">Adrián K.</a>
+        </div>
+    </header>
+
+    <main class="card">
+        <div class="page-title-bar">
+            <div>
+                <h1>Môj turistický denník</h1>
+                <p class="subtitle">Správa vlastných záznamov, GPX trás a priama úprava stavov v tabuľke (AJAX in-place
+                    editing)</p>
+            </div>
+            <a href="hike-form.html" class="btn btn-primary">+ Pridať novú túru</a>
+        </div>
+
+        <!-- Štatistický prehľad -->
+        <div class="metrics-grid">
+            <div class="metric-box">
+                <span class="metric-label">Celkovo záznamov</span>
+                <strong class="metric-value">23 túr</strong>
+            </div>
+            <div class="metric-box">
+                <span class="metric-label">Celková vzdialenosť</span>
+                <strong class="metric-value">284.5 km</strong>
+            </div>
+            <div class="metric-box">
+                <span class="metric-label">Celkové prevýšenie</span>
+                <strong class="metric-value">18 450 m</strong>
+            </div>
+            <div class="metric-box">
+                <span class="metric-label">Najvyšší bod</span>
+                <strong class="metric-value">Ľadový štít (2 627 m)</strong>
+            </div>
+        </div>
+
+        <!-- Lišta filtrovania tabuľky -->
+        <div class="table-toolbar">
+            <input type="search" class="search-input" placeholder="Filtrovať v tabuľke (AJAX)..."
+                   aria-label="Filtrovať v tabuľke">
+            <div class="header-actions">
+                <select class="inline-select" aria-label="Filtrovať podľa pohoria">
+                    <option>Všetky pohoria</option>
+                    <option>Vysoké Tatry</option>
+                    <option>Západné Tatry</option>
+                    <option>Nízke Tatry</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Dátová tabuľka -->
+        <div class="table-responsive">
+            <table class="data-table">
+                <thead>
+                <tr>
+                    <th>Názov výstupu</th>
+                    <th>Pohorie</th>
+                    <th>Dátum</th>
+                    <th>Parametre</th>
+                    <th>GPX súbor</th>
+                    <th>Stav (In-place AJAX)</th>
+                    <th>Akcie (CRUD)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><strong><a href="hike-detail.html" style="color: var(--text-dark); text-decoration: none;">Výstup
+                        na Kriváň (2 494 m)</a></strong></td>
+                    <td><span class="badge badge-mountain">Vysoké Tatry</span></td>
+                    <td>12. 09. 2026</td>
+                    <td>15.8 km • +1 360 m</td>
+                    <td><code>krivan_track.gpx</code></td>
+                    <td>
+                        <select class="inline-select" aria-label="Stav túry">
+                            <option selected>✓ Absolvovaná</option>
+                            <option>Plánovaná</option>
+                        </select>
+                    </td>
+                    <td>
+                        <a href="hike-detail.html" class="btn btn-sm btn-secondary">3D Mapa</a>
+                        <a href="hike-form.html" class="btn btn-sm btn-secondary">Upraviť</a>
+                        <button type="button" class="btn btn-sm btn-danger">Zmazať</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong><a href="hike-detail.html" style="color: var(--text-dark); text-decoration: none;">Prechod
+                        cez Rysy (2 503 m)</a></strong></td>
+                    <td><span class="badge badge-mountain">Vysoké Tatry</span></td>
+                    <td>28. 08. 2026</td>
+                    <td>21.4 km • +1 290 m</td>
+                    <td><code>rysy_prechod.gpx</code></td>
+                    <td>
+                        <select class="inline-select" aria-label="Stav túry">
+                            <option selected>✓ Absolvovaná</option>
+                            <option>Plánovaná</option>
+                        </select>
+                    </td>
+                    <td>
+                        <a href="hike-detail.html" class="btn btn-sm btn-secondary">3D Mapa</a>
+                        <a href="hike-form.html" class="btn btn-sm btn-secondary">Upraviť</a>
+                        <button type="button" class="btn btn-sm btn-danger">Zmazať</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong><a href="hike-detail.html" style="color: var(--text-dark); text-decoration: none;">Ľadový
+                        štít cez Koňarčinu</a></strong></td>
+                    <td><span class="badge badge-mountain">Vysoké Tatry</span></td>
+                    <td>04. 08. 2026</td>
+                    <td>18.2 km • +1 580 m</td>
+                    <td><code>ladovy_stit.gpx</code></td>
+                    <td>
+                        <select class="inline-select" aria-label="Stav túry">
+                            <option selected>✓ Absolvovaná</option>
+                            <option>Plánovaná</option>
+                        </select>
+                    </td>
+                    <td>
+                        <a href="hike-detail.html" class="btn btn-sm btn-secondary">3D Mapa</a>
+                        <a href="hike-form.html" class="btn btn-sm btn-secondary">Upraviť</a>
+                        <button type="button" class="btn btn-sm btn-danger">Zmazať</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong><a href="hike-detail.html" style="color: var(--text-dark); text-decoration: none;">Východná
+                        Vysoká z Tatranskej Polianky</a></strong></td>
+                    <td><span class="badge badge-mountain">Vysoké Tatry</span></td>
+                    <td>07. 11. 2026</td>
+                    <td>14.6 km • +1 420 m</td>
+                    <td><code>vychodna_plan.gpx</code></td>
+                    <td>
+                        <select class="inline-select" aria-label="Stav túry">
+                            <option>✓ Absolvovaná</option>
+                            <option selected>⏳ Plánovaná</option>
+                        </select>
+                    </td>
+                    <td>
+                        <a href="hike-detail.html" class="btn btn-sm btn-secondary">3D Mapa</a>
+                        <a href="hike-form.html" class="btn btn-sm btn-secondary">Upraviť</a>
+                        <button type="button" class="btn btn-sm btn-danger">Zmazať</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer class="app-footer">
+        ExploreSlovakia 2026 • Semestrálna práca VAII (UNIZA FRI) • Autor: Adrián Kres • <a href="layout.html">Zobraziť
+        kostru (Shell)</a> • <a href="login.html">Prihlásenie</a>
+    </footer>
+</div>
+</body>
+</html>

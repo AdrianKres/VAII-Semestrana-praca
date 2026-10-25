@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExploreSlovakia – Základné rozloženie aplikácie (Shell)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-container">
+    <header class="app-header">
+        <a href="index.html" class="brand">
+            <svg class="brand-logo" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+                <rect width="44" height="44" rx="12" fill="#E6F2F7"/>
+                <path d="M 2 34 L 11 19 L 19 27 L 33 15 L 42 34 Z" fill="#87BAD1"/>
+                <path d="M 5 36 L 14 20 L 19 8 L 23 5 L 24 11 L 30 16 L 39 36 Z" fill="#266178"/>
+                <path d="M 14 20 L 19 8 L 23 5 L 21 14 L 18 19 L 20 24 L 14 20 Z" fill="#FFFFFF"/>
+                <path d="M 0 35 Q 15 26 30 34 L 44 37 L 44 44 L 0 44 Z" fill="#2E5238"/>
+                <path d="M 8 44 Q 26 29 44 33 L 44 44 Z" fill="#70A642"/>
+            </svg>
+            <span class="brand-title">ExploreSlovakia</span>
+        </a>
+
+        <nav class="main-nav" aria-label="Hlavná navigácia">
+            <a href="index.html" class="nav-link">Prehľad</a>
+            <a href="my-hikes.html" class="nav-link">Moje túry</a>
+            <a href="hike-detail.html" class="nav-link">3D Detail</a>
+            <a href="mountains.html" class="nav-link">Pohoria</a>
+            <a href="layout.html" class="nav-link active">Šablóna</a>
+        </nav>
+
+        <div class="header-actions">
+            <a href="hike-form.html" class="btn btn-primary">+ Nová túra</a>
+            <a href="login.html" class="user-pill" title="Prejsť na prihlásenie / profil">Adrián K.</a>
+        </div>
+    </header>
+
+    <div class="shell-grid">
+        <aside class="card sidebar-section" aria-label="Filtre a štatistiky">
+            <h2>Bočný panel / Filtre</h2>
+            <input type="search" class="search-input" placeholder="Hľadať túru..." aria-label="Hľadať túru">
+
+            <div class="filter-box">
+                <h3>Filter pohorí a obtiažnosti</h3>
+                <ul class="filter-list">
+                    <li>☑ Vysoké Tatry (12)</li>
+                    <li>☑ Západné Tatry (5)</li>
+                    <li>☐ Nízke Tatry (8)</li>
+                    <li>☐ Malá Fatra (6)</li>
+                </ul>
+            </div>
+
+            <div class="filter-box">
+                <h3>Rýchle štatistiky používateľa</h3>
+                <ul class="filter-list">
+                    <li>Absolvované túry: <strong>23</strong></li>
+                    <li>Celkové prevýšenie: <strong>18 450 m</strong></li>
+                    <li>Prejdená vzdialenosť: <strong>284 km</strong></li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="card">
+            <h1>Hlavný obsah stránky (Dynamický pohľad – MVC View)</h1>
+            <div class="placeholder-canvas">
+                <p><strong>[ Zástupný priestor pre dynamický obsah podstránok ]</strong></p>
+                <p style="margin-top: 8px; max-width: 560px;">
+                    Táto obrazovka predstavuje hlavnú kostru aplikácie (Rám 1 z wireframu). Kliknutím na tlačidlá nižšie
+                    alebo v hornej navigácii si môžete vyskúšať všetky prepojené obrazovky prototypu:
+                </p>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 22px;">
+                    <a href="index.html" class="btn btn-primary">1. Prehľad túr (Domov)</a>
+                    <a href="hike-detail.html" class="btn btn-primary">2. 3D Detail túry (Kriváň)</a>
+                    <a href="my-hikes.html" class="btn btn-secondary">3. Moje túry (Tabuľka)</a>
+                    <a href="hike-form.html" class="btn btn-secondary">4. Formulár & GPX Upload</a>
+                    <a href="mountains.html" class="btn btn-secondary">5. Pohoria (Admin CRUD)</a>
+                    <a href="login.html" class="btn btn-secondary">6. Prihlásenie</a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="app-footer">
+        ExploreSlovakia 2026 • Semestrálna práca VAII (UNIZA FRI) • Autor: Adrián Kres • <a href="layout.html">Zobraziť
+        kostru (Shell)</a> • <a href="login.html">Prihlásenie</a>
+    </footer>
+</div>
+</body>
+</html>

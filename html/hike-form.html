@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExploreSlovakia – Pridať / Upraviť túru</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-container">
+    <header class="app-header">
+        <a href="index.html" class="brand">
+            <svg class="brand-logo" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+                <rect width="44" height="44" rx="12" fill="#E6F2F7"/>
+                <path d="M 2 34 L 11 19 L 19 27 L 33 15 L 42 34 Z" fill="#87BAD1"/>
+                <path d="M 5 36 L 14 20 L 19 8 L 23 5 L 24 11 L 30 16 L 39 36 Z" fill="#266178"/>
+                <path d="M 14 20 L 19 8 L 23 5 L 21 14 L 18 19 L 20 24 L 14 20 Z" fill="#FFFFFF"/>
+                <path d="M 0 35 Q 15 26 30 34 L 44 37 L 44 44 L 0 44 Z" fill="#2E5238"/>
+                <path d="M 8 44 Q 26 29 44 33 L 44 44 Z" fill="#70A642"/>
+            </svg>
+            <span class="brand-title">ExploreSlovakia</span>
+        </a>
+
+        <nav class="main-nav" aria-label="Hlavná navigácia">
+            <a href="index.html" class="nav-link">Prehľad</a>
+            <a href="my-hikes.html" class="nav-link active">Moje túry</a>
+            <a href="hike-detail.html" class="nav-link">3D Detail</a>
+            <a href="mountains.html" class="nav-link">Pohoria</a>
+            <a href="layout.html" class="nav-link">Šablóna</a>
+        </nav>
+
+        <div class="header-actions">
+            <a href="hike-form.html" class="btn btn-primary">+ Nová túra</a>
+            <a href="login.html" class="user-pill" title="Prejsť na prihlásenie / profil">Adrián K.</a>
+        </div>
+    </header>
+
+    <main class="card form-container">
+        <div class="page-title-bar">
+            <div>
+                <h1>Pridať / Upraviť záznam túry</h1>
+                <p class="subtitle">Vyplňte parametre výstupu a priložte GPX súbor pre vygenerovanie 3D trasy</p>
+            </div>
+            <a href="my-hikes.html" class="btn btn-secondary">← Späť na denník</a>
+        </div>
+
+        <form action="hike-detail.html" method="get">
+            <div class="form-grid">
+                <div class="form-group full-width">
+                    <label class="form-label" for="title">Názov túry / vrcholu *</label>
+                    <input type="text" id="title" class="form-control" value="Výstup na Kriváň (2 494 m n. m.)"
+                           required>
+                    <span class="form-hint">Povinné pole (min. 5 znakov, kontrolované na strane klienta aj servera).</span>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="mountain_range">Pohorie (entita MountainRange) *</label>
+                    <select id="mountain_range" class="form-control" required>
+                        <option value="1" selected>Vysoké Tatry</option>
+                        <option value="2">Západné Tatry</option>
+                        <option value="3">Nízke Tatry</option>
+                        <option value="4">Malá Fatra</option>
+                        <option value="5">Slovenský raj</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="hike_date">Dátum výstupu *</label>
+                    <input type="date" id="hike_date" class="form-control" value="2026-09-12" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="distance">Vzdialenosť (km) *</label>
+                    <input type="number" id="distance" step="0.1" min="0.5" max="200" class="form-control" value="15.8"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="elevation">Prevýšenie (m) *</label>
+                    <input type="number" id="elevation" min="0" max="8000" class="form-control" value="1360" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="duration">Čas trvania (minúty) *</label>
+                    <input type="number" id="duration" min="10" class="form-control" value="375" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="status">Stav záznamu</label>
+                    <select id="status" class="form-control">
+                        <option value="completed" selected>Absolvovaná túra</option>
+                        <option value="planned">Plánovaná túra</option>
+                    </select>
+                </div>
+
+                <div class="form-group full-width">
+                    <label class="form-label" for="description">Poznámky z denníka a podmienky na trase</label>
+                    <textarea id="description" rows="4" class="form-control">Skvelé jesenné počasie, ráno mierny mráz v kosodrevine. Záver výstupu cez Daxnerov žľab náročný na orientáciu a prudké stúpanie po skale.</textarea>
+                </div>
+
+                <!-- Upload GPX -->
+                <div class="form-group">
+                    <label class="form-label" for="gpx_file">GPX záznam trasy (pre 3D MapLibre)</label>
+                    <label class="file-dropzone" for="gpx_file">
+                        <strong>📍 Nahrať súbor .GPX</strong>
+                        <span class="form-hint">Vyberte súbor z počítača (max. 10 MB)</span>
+                        <input type="file" id="gpx_file" accept=".gpx" style="margin-top: 10px; max-width: 100%;">
+                    </label>
+                </div>
+
+                <!-- Upload Fotiek -->
+                <div class="form-group">
+                    <label class="form-label" for="photo_files">Fotografie z výstupu (entita Photo)</label>
+                    <label class="file-dropzone" for="photo_files">
+                        <strong>📷 Pridať fotografie (.JPG, .PNG)</strong>
+                        <span class="form-hint">Môžete označiť viacero obrázkov naraz</span>
+                        <input type="file" id="photo_files" accept="image/*" multiple
+                               style="margin-top: 10px; max-width: 100%;">
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <a href="my-hikes.html" class="btn btn-secondary">Zrušiť</a>
+                <button type="submit" class="btn btn-primary">Uložiť záznam a zobraziť 3D mapu</button>
+            </div>
+        </form>
+    </main>
+
+    <footer class="app-footer">
+        ExploreSlovakia 2026 • Semestrálna práca VAII (UNIZA FRI) • Autor: Adrián Kres • <a href="layout.html">Zobraziť
+        kostru (Shell)</a> • <a href="login.html">Prihlásenie</a>
+    </footer>
+</div>
+</body>
+</html>
