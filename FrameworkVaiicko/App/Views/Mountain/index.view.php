@@ -1,70 +1,77 @@
 <?php
+/** @var \App\Models\Mountain[] $mountains */
 /** @var \Framework\Support\LinkGenerator $link */
 /** @noinspection PhpUnhandledExceptionInspection */
 ?>
-<div class="detail-grid">
-    <!-- Zoznam pohorí (CRUD Read/Update/Delete) -->
-    <section class="card">
-        <div class="page-title-bar">
-            <div>
-                <h1>Slovenské pohoria</h1>
-                <p class="subtitle">Prehľad regiónov a správa druhej hlavnej databázovej entity (MountainRange)</p>
-            </div>
-            <span class="badge badge-admin">Rola: Administrátor</span>
+<div>
+    <div class="page-title-bar">
+        <div>
+            <h1>Slovenské pohoria (Číselník DB)</h1>
+            <p class="subtitle">Prehľad horských oblastí, najvyšších vrcholov a počtu evidovaných trás v databáze</p>
         </div>
+    </div>
 
-        <div class="table-responsive">
-            <table class="data-table">
-                <thead>
+    <div class="table-responsive" style="margin-bottom: 28px;">
+        <table class="data-table">
+            <thead>
+            <tr>
+                <th>Pohorie</th>
+                <th>Najvyšší vrchol</th>
+                <th>Nadmorská výška</th>
+                <th>Charakteristika</th>
+                <th>Počet túr v DB</th>
+                <th>Akcie</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($mountains as $m): ?>
+                <?php $count = $m->getHikeCount(); ?>
                 <tr>
-                    <th>ID</th>
-                    <th>Názov pohoria</th>
-                    <th>Najvyšší vrchol</th>
-                    <th>Počet túr</th>
-                    <th>Správa (Admin CRUD)</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>#1</td>
-                    <td><strong>Vysoké Tatry</strong><br><span class="subtitle">Najvyššie pohorie Slovenska s ľadovcovým reliéfom</span></td>
-                    <td>Gerlachovský štít (2 655 m)</td>
-                    <td><span class="badge badge-mountain">12 túr</span></td>
-                    <td>
-                        <button type="button" class="btn btn-sm btn-secondary">Upraviť</button>
-                        <button type="button" class="btn btn-sm btn-danger">Zmazať</button>
+                    <td class="cell-nowrap"><strong><?= htmlspecialchars((string)$m->getName()) ?></strong></td>
+                    <td class="cell-nowrap"><?= htmlspecialchars((string)$m->getHighestPeak()) ?></td>
+                    <td class="cell-nowrap"><?= number_format((int)$m->getElevation(), 0, '.', ' ') ?> m n. m.</td>
+                    <td><?= htmlspecialchars((string)$m->getDescription()) ?></td>
+                    <td class="cell-nowrap"><span class="badge badge-mountain"><?= $count ?> trás</span></td>
+                    <td class="cell-nowrap">
+                        <div class="table-actions">
+                            <a href="<?= $link->url('home.index', ['mountains' => [$m->getName()]]) ?>" class="btn btn-sm btn-secondary">Filtrovať túry</a>
+                            <?php if ($count === 0): ?>
+                                <form action="<?= $link->url('mountain.delete') ?>" method="post" style="display: inline; margin: 0;">
+                                    <input type="hidden" name="id" value="<?= $m->getId() ?>">
+                                    <button type="submit" class="btn btn-sm btn-danger">Zmazať</button>
+                                </form>
+                            <?php endif; ?>
+                        </div>
                     </td>
                 </tr>
-                <!-- Pre stručnosť môžeš doplniť ostatné riadky z pôvodného HTML -->
-                </tbody>
-            </table>
-        </div>
-    </section>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
 
-    <!-- Formulár pre pridanie/úpravu pohoria -->
-    <aside class="card side-panel">
-        <div>
-            <h2>Pridať / Upraviť pohorie</h2>
-            <p class="subtitle" style="margin-bottom: 16px;">Sekcia prístupná pre rolu Administrátor</p>
-
-            <form action="<?= $link->url('mountain.index') ?>" method="post" style="display: flex; flex-direction: column; gap: 14px;">
-                <div class="form-group">
-                    <label class="form-label" for="m_name">Názov pohoria *</label>
-                    <input type="text" id="m_name" class="form-control" placeholder="napr. Veľká Fatra" required>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" for="m_peak">Najvyšší vrchol a výška</label>
-                    <input type="text" id="m_peak" class="form-control" placeholder="napr. Ostredok (1 596 m)">
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" for="m_desc">Charakteristika pohoria *</label>
-                    <textarea id="m_desc" rows="4" class="form-control" placeholder="Stručný opis pohoria..." required></textarea>
-                </div>
-
-                <button type="submit" class="btn btn-primary" style="margin-top: 6px;">+ Uložiť pohorie do DB</button>
-            </form>
-        </div>
-    </aside>
+    <!-- Pridanie nového pohoria do číselníka -->
+    <div style="background: #f8faf9; padding: 20px; border-radius: 12px; border: 1px solid #dce5df;">
+        <h3 style="margin-top: 0;">+ Pridať nové pohorie do databázy</h3>
+        <form action="<?= $link->url('mountain.save') ?>" method="post" class="form-grid">
+            <div class="form-group">
+                <label class="form-label">Názov pohoria *</label>
+                <input type="text" name="name" class="form-control" placeholder="napr. Chočské vrchy" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Najvyšší vrchol *</label>
+                <input type="text" name="highest_peak" class="form-control" placeholder="napr. Veľký Choč" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Výška (m n. m.) *</label>
+                <input type="number" name="elevation" class="form-control" placeholder="napr. 1611" required>
+            </div>
+            <div class="form-group full-width">
+                <label class="form-label">Stručná charakteristika</label>
+                <input type="text" name="description" class="form-control" placeholder="Krasové pohorie s výhľadovým hlavným vrcholom...">
+            </div>
+            <div class="form-group full-width">
+                <button type="submit" class="btn btn-primary">Uložiť pohorie do číselníka</button>
+            </div>
+        </form>
+    </div>
 </div>
